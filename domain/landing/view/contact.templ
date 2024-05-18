@@ -1,0 +1,29 @@
+package view
+
+import (
+	"gohx/internal/component"
+)
+
+script ContactScript() {
+    console.log("from custom /contact script");
+}
+
+templ ContactStyle() {
+    <style>
+        h1 {
+            color: brown;
+        }
+    </style>
+}
+
+templ Contact() {
+    @component.Layout(component.LayoutProps{
+        BaseProps: component.BaseProps{
+            Styles: []templ.Component{ContactStyle()},
+            Scripts: []templ.ComponentScript{ContactScript()},
+        },
+        ShowNavbar: true,
+    }) {
+        <h1>Contact</h1>
+    }
+}

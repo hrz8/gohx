@@ -1,0 +1,29 @@
+package view
+
+import (
+	"gohx/internal/component"
+)
+
+script HomeScript() {
+    console.log("from custom / script");
+}
+
+templ HomeStyle() {
+    <style>
+        h1 {
+            color: violet;
+        }
+    </style>
+}
+
+templ Home() {
+    @component.Layout(component.LayoutProps{
+        BaseProps: component.BaseProps{
+            Styles: []templ.Component{HomeStyle()},
+            Scripts: []templ.ComponentScript{HomeScript()},
+        },
+        ShowNavbar: true,
+    }) {
+        <h1>Homepage</h1>
+    }
+}
