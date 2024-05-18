@@ -1,0 +1,29 @@
+package view
+
+import (
+	"gohx/internal/component"
+)
+
+script IndexScript() {
+    console.log("from custom /products/index script");
+}
+
+templ IndexStyle() {
+    <style>
+        h1 {
+            color: green;
+        }
+    </style>
+}
+
+templ Index() {
+    @component.Layout(component.LayoutProps{
+        BaseProps: component.BaseProps{
+            Styles: []templ.Component{IndexStyle()},
+            Scripts: []templ.ComponentScript{IndexScript()},
+        },
+        ShowNavbar: true,
+    }) {
+        <h1>Our Products</h1>
+    }
+}

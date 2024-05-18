@@ -1,0 +1,30 @@
+package view
+
+import (
+	"gohx/internal/component"
+)
+
+script AboutScript() {
+    console.log("from custom /about script");
+    console.log(Signal);
+}
+
+templ AboutStyle() {
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+}
+
+templ About() {
+    @component.Layout(component.LayoutProps{
+        BaseProps: component.BaseProps{
+            Styles: []templ.Component{AboutStyle()},
+            Scripts: []templ.ComponentScript{AboutScript()},
+        },
+        ShowNavbar: true,
+    }) {
+        <h1>About</h1>
+    }
+}

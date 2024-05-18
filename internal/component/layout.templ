@@ -1,0 +1,39 @@
+package component
+
+import (
+    "gohx/internal/helper"
+)
+
+type LayoutProps struct {
+    BaseProps
+    ShowNavbar bool
+}
+
+templ Layout(props LayoutProps) {
+    @Base(BaseProps{
+        Styles: props.Styles,
+        Scripts: props.Scripts,
+    }) {
+        if props.ShowNavbar && !helper.IsHtmxRequest(ctx) {
+            @Navbar()
+        }
+        <div class="container">
+            <main id="main-content">
+                { children... }
+            </main>
+        </div>
+
+        if helper.IsHtmxRequest(ctx) {
+            <span id="custom-styles">
+                for _, style := range props.Styles {
+                    @style
+                }
+            </span>
+            <span id="custom-scripts">
+                for _, script := range props.Scripts {
+                    @script
+                }
+            </span>
+        }
+    }
+}

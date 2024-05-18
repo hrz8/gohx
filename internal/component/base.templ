@@ -1,0 +1,43 @@
+package component
+
+import (
+    "gohx/internal/helper"
+)
+
+type BaseProps struct {
+    Styles []templ.Component
+    Scripts []templ.ComponentScript
+}
+
+templ Base(props BaseProps) {
+    if !helper.IsHtmxRequest(ctx) {
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>gohx - by hrz8</title>
+                <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+                <script type="text/javascript" src="/assets/vendor/signal-polyfill.js"></script>
+                <link rel="stylesheet" href="/assets/css/style.css"/>
+            </head>
+            <body hx-indicator=".progress-indicator" hx-target="#main-content" hx-select="#main-content" hx-select-oob="#custom-scripts,custom-styles" hx-swap="outerHTML">
+                <div class="progress-indicator"><div class="indeterminate dark:indeterminate-dark"></div></div>
+                <span id="custom-styles">
+                    for _, style := range props.Styles {
+                        @style
+                    }
+                </span>
+                { children... }
+                <script type="text/javascript" src="/assets/js/script.js"></script>
+                <span id="custom-scripts">
+                    for _, script := range props.Scripts {
+                        @script
+                    }
+                </span>
+            </body>
+        </html>
+    } else {
+        { children... }
+    }
+}
