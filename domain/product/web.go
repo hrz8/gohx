@@ -16,7 +16,7 @@ type ProductSvc interface {
 }
 
 func NewWeb(svc ProductSvc) *Web {
-	return &Web{svc}
+	return &Web{svc: svc}
 }
 
 func (web *Web) Index(w http.ResponseWriter, r *http.Request) {

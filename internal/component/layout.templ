@@ -5,22 +5,28 @@ import (
 )
 
 type LayoutProps struct {
-    BaseProps
+    Section
     ShowNavbar bool
+    CurrentPage string
 }
 
 templ Layout(props LayoutProps) {
-    @Base(BaseProps{
+    @Base(Section{
         Styles: props.Styles,
         Scripts: props.Scripts,
     }) {
-        if props.ShowNavbar && !helper.IsHtmxRequest(ctx) {
-            @Navbar()
+        if props.ShowNavbar {
+            @Navbar(NavbarProps{
+                CurrentPage: props.CurrentPage,
+            })
         }
+        
         <div class="container">
-            <main id="main-content">
-                { children... }
-            </main>
+            <div class="row">
+                <main id="main-content">
+                    { children... }
+                </main>
+            </div>
         </div>
 
         if helper.IsHtmxRequest(ctx) {
