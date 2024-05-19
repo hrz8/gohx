@@ -1,0 +1,28 @@
+{
+  "name": "gohx",
+  "version": "0.1.0",
+  "description": "fullstack web template using golang+htmx+signal+templ+sqlc+bun",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrz8/gohx.git"
+  },
+  "author": "Hirzi Nurfakhrian <hirzinurfakhrian@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "setup": "templ generate && bun install && go mod tidy",
+    "db:migration:gen": "drizzle-kit generate",
+    "db:migration:exe": "drizzle-kit migrate"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.2",
+    "@types/pg": "^8.11.6",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.21.2",
+    "drizzle-orm": "^0.30.10",
+    "pg": "^8.11.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
