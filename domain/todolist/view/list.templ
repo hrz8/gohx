@@ -1,0 +1,23 @@
+package view
+
+import (
+	"gohx/internal/component"
+)
+
+script ListScript() {
+}
+
+templ ListStyle() {
+}
+
+templ List() {
+    @component.Layout(component.LayoutProps{
+        Section: component.Section{
+            Styles: []templ.Component{ListStyle()},
+            Scripts: []templ.ComponentScript{ListScript()},
+        },
+        ShowNavbar: true,
+    }) {
+        <h1>My Todo-list</h1>
+    }
+}

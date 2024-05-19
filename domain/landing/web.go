@@ -4,38 +4,44 @@ import (
 	"context"
 	"gohx/domain/landing/view"
 	"gohx/internal/helper"
+	dbrepo "gohx/internal/repo/db"
 	"net/http"
 )
 
-type Handler struct {
-	svc LandingSvc
+type Web struct {
+	svc         LandingSvc
+	todolistSvc TodolistSvc
 }
 
 type LandingSvc interface {
 	LongRunningMethod(ctx context.Context)
 }
 
-func NewHandler(svc LandingSvc) *Handler {
-	return &Handler{svc}
+type TodolistSvc interface {
+	GetAllTasks(ctx context.Context) ([]*dbrepo.GetAllTasksRow, error)
 }
 
-func (h *Handler) Home(w http.ResponseWriter, r *http.Request) {
+func NewWeb(svc LandingSvc, todolistSvc TodolistSvc) *Web {
+	return &Web{svc: svc}
+}
+
+func (web *Web) Home(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
-	h.svc.LongRunningMethod(ctx)
+	web.svc.LongRunningMethod(ctx)
 	helper.RenderView(ctx, w, view.Home())
 }
 
-func (h *Handler) About(w http.ResponseWriter, r *http.Request) {
+func (web *Web) About(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
-	h.svc.LongRunningMethod(ctx)
+	web.svc.LongRunningMethod(ctx)
 	helper.RenderView(ctx, w, view.About())
 }
 
-func (h *Handler) Contact(w http.ResponseWriter, r *http.Request) {
+func (web *Web) Contact(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
-	h.svc.LongRunningMethod(ctx)
+	web.svc.LongRunningMethod(ctx)
 	helper.RenderView(ctx, w, view.Contact())
 }

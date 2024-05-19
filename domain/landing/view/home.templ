@@ -18,11 +18,12 @@ templ HomeStyle() {
 
 templ Home() {
     @component.Layout(component.LayoutProps{
-        BaseProps: component.BaseProps{
+        Section: component.Section{
             Styles: []templ.Component{HomeStyle()},
             Scripts: []templ.ComponentScript{HomeScript()},
         },
         ShowNavbar: true,
+        CurrentPage: "home",
     }) {
         <h1>Homepage</h1>
     }
