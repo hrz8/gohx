@@ -1,0 +1,16 @@
+version: "3"
+tasks:
+  setup:
+    cmds:
+      - go mod tidy
+      - templ generate
+      - bun install
+  db:migrate:gen:
+    cmds:
+      - bun run db:migrate:gen
+  db:migrate:apply:
+    cmds:
+      - bun run db:migrate:apply
+  dev:
+    cmds:
+      - air
