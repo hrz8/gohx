@@ -23,6 +23,7 @@ export const tasks = pgTable("tasks", {
   id: serial("id").primaryKey(),
   uuid: uuid("uuid")
     .unique()
+    .notNull()
     .default(sql`gen_random_uuid()`),
   categoryId: serial("category_id")
     .references(() => categories.id, { onDelete: "cascade" })
