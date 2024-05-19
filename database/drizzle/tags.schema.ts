@@ -7,6 +7,7 @@ export const tags = pgTable("tags", {
   id: serial("id").primaryKey(),
   uuid: uuid("uuid")
     .unique()
+    .notNull()
     .default(sql`gen_random_uuid()`),
   name: varchar("name", { length: 50 }).notNull(),
   color: varchar("color", { length: 7 }).notNull(),

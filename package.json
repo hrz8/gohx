@@ -9,10 +9,13 @@
   },
   "author": "Hirzi Nurfakhrian <hirzinurfakhrian@gmail.com>",
   "type": "module",
+  "engines": {
+    "bun": ">=1.1.0",
+    "node": ">=20.11.0"
+  },
   "scripts": {
-    "setup": "templ generate && bun install && go mod tidy",
-    "db:migration:gen": "drizzle-kit generate",
-    "db:migration:exe": "drizzle-kit migrate"
+    "db:migrate:gen": "drizzle-kit generate",
+    "db:migrate:apply": "drizzle-kit migrate"
   },
   "devDependencies": {
     "@types/bun": "^1.1.2",

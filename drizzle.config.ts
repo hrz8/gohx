@@ -14,8 +14,8 @@ export default {
     table: "migrations",
     schema: "public",
   },
-  schema: "./database/**/*.schema.ts",
-  out: "./database/drizzle",
+  schema: "./database/drizzle/*.schema.ts",
+  out: "./database/schema",
   dialect: "postgresql",
   dbCredentials: {
     url: DATABASE_URL,

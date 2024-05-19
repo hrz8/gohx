@@ -7,6 +7,7 @@ export const categories = pgTable("categories", {
   id: serial("id").primaryKey(),
   uuid: uuid("uuid")
     .unique()
+    .notNull()
     .default(sql`gen_random_uuid()`),
   name: varchar("name", { length: 50 }).notNull(),
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
