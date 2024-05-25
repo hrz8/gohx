@@ -1,45 +1,47 @@
 package component
 
 import (
-    "gohx/internal/helper"
+	"gohx/internal/helper"
 )
 
 type LayoutProps struct {
-    Section
-    ShowNavbar bool
-    CurrentPage string
+	Section
+	ShowNavbar  bool
+	CurrentPage string
 }
 
 templ Layout(props LayoutProps) {
-    @Base(Section{
-        Styles: props.Styles,
-        Scripts: props.Scripts,
-    }) {
-        if props.ShowNavbar {
-            @Navbar(NavbarProps{
-                CurrentPage: props.CurrentPage,
-            })
-        }
-        
-        <div class="container">
-            <div class="row">
-                <main id="main-content">
-                    { children... }
-                </main>
-            </div>
-        </div>
-
-        if helper.IsHtmxRequest(ctx) {
-            <span id="custom-styles">
-                for _, style := range props.Styles {
-                    @style
-                }
-            </span>
-            <span id="custom-scripts">
-                for _, script := range props.Scripts {
-                    @script
-                }
-            </span>
-        }
-    }
+	@Base(Section{
+		Styles:  props.Styles,
+		Scripts: props.Scripts,
+	}) {
+		if props.ShowNavbar {
+			// @Navbar(NavbarProps{
+			// 	CurrentPage: props.CurrentPage,
+			// })
+		}
+		<div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+			@Sidebar()
+			@SidebarBackDrop()
+			<div class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+				<div class="row">
+					<main id="main-content">
+						{ children... }
+					</main>
+				</div>
+			</div>
+		</div>
+		if helper.IsHtmxRequest(ctx) {
+			<span id="custom-styles">
+				for _, style := range props.Styles {
+					@style
+				}
+			</span>
+			<span id="custom-scripts">
+				for _, script := range props.Scripts {
+					@script
+				}
+			</span>
+		}
+	}
 }

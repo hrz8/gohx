@@ -15,7 +15,9 @@
   },
   "scripts": {
     "db:migrate:gen": "drizzle-kit generate",
-    "db:migrate:apply": "drizzle-kit migrate"
+    "db:migrate:apply": "drizzle-kit migrate",
+    "build": "bun run build:tailwind && bun run esbuild.ts",
+    "build:tailwind": "tailwindcss -i ./src/css/style.css -o ./assets/public/css/bundled.min.css"
   },
   "devDependencies": {
     "@types/bun": "^1.1.2",
@@ -23,7 +25,11 @@
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.21.2",
     "drizzle-orm": "^0.30.10",
-    "pg": "^8.11.5"
+    "esbuild-plugin-copy": "^2.1.1",
+    "flowbite": "^2.3.0",
+    "htmx.org": "^1.9.12",
+    "pg": "^8.11.5",
+    "tailwindcss": "^3.4.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
