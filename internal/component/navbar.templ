@@ -1,80 +1,80 @@
 package component
 
 type NavbarProps struct {
-    CurrentPage string
+	CurrentPage string
 }
 
 type NavbarItemProps struct {
-    NavbarProps
-    Name string
-    Label string
-    Href string
+	NavbarProps
+	Name  string
+	Label string
+	Href  string
 }
 
 func NavbarItems() []NavbarItemProps {
-    return []NavbarItemProps{
-        {
-            Name: "home",
-            Label: "Home",
-            Href: "/",
-        },
-        {
-            Name: "about",
-            Label: "About",
-            Href: "/about",
-        },
-        {
-            Name: "products",
-            Label: "Products",
-            Href: "/products",
-        },
-        {
-            Name: "contact",
-            Label: "Contact",
-            Href: "/contact",
-        },
-    }
+	return []NavbarItemProps{
+		{
+			Name:  "home",
+			Label: "Home",
+			Href:  "/",
+		},
+		{
+			Name:  "about",
+			Label: "About",
+			Href:  "/about",
+		},
+		{
+			Name:  "products",
+			Label: "Products",
+			Href:  "/products",
+		},
+		{
+			Name:  "contact",
+			Label: "Contact",
+			Href:  "/contact",
+		},
+	}
 }
 
 templ NavbarItem(props NavbarItemProps) {
-    <li class="nav-item">
-        if props.Name == props.NavbarProps.CurrentPage {
-            <a class="nav-link active" aria-current="page" href={ templ.URL(props.Href) }>{ props.Label }</a>
-        } else {
-            <a class="nav-link" href={ templ.URL(props.Href) }>{ props.Label }</a>
-        }
-    </li>
+	<li class="nav-item">
+		if props.Name == props.NavbarProps.CurrentPage {
+			<a class="nav-link active" aria-current="page" href={ templ.URL(props.Href) }>{ props.Label }</a>
+		} else {
+			<a class="nav-link" href={ templ.URL(props.Href) }>{ props.Label }</a>
+		}
+	</li>
 }
 
 templ NavbarContent(props NavbarProps) {
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbar-content" aria-labelledby="navbar-content-label">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="navbar-content-label">Navbar</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul hx-boost="true" class="navbar-nav me-auto mb-2 mb-lg-0">
-                for _, item := range NavbarItems() {
-                    @NavbarItem(NavbarItemProps{
-                        NavbarProps: props,
-                        Name: item.Name,
-                        Label: item.Label,
-                        Href: item.Href,
-                    })
-                }
-            </ul>
-        </div>
-    </div>
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="navbar-content" aria-labelledby="navbar-content-label">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="navbar-content-label">Navbar</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<ul hx-boost="true" class="navbar-nav me-auto mb-2 mb-lg-0">
+				for _, item := range NavbarItems() {
+					@NavbarItem(NavbarItemProps{
+						NavbarProps: props,
+						Name:        item.Name,
+						Label:       item.Label,
+						Href:        item.Href,
+					})
+				}
+			</ul>
+		</div>
+	</div>
 }
 
 templ Navbar(props NavbarProps) {
-    <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            @NavbarContent(props)
-        </div>
-    </nav>
+	<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Navbar</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			@NavbarContent(props)
+		</div>
+	</nav>
 }
