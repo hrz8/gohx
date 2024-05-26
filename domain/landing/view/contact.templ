@@ -9,7 +9,7 @@ script ContactScript() {
 }
 
 templ ContactStyle() {
-    <style>
+	<style>
         h1 {
             color: brown;
         }
@@ -17,14 +17,15 @@ templ ContactStyle() {
 }
 
 templ Contact() {
-    @component.Layout(component.LayoutProps{
-        Section: component.Section{
-            Styles: []templ.Component{ContactStyle()},
-            Scripts: []templ.ComponentScript{ContactScript()},
-        },
-        ShowNavbar: true,
-        CurrentPage: "contact",
-    }) {
-        <h1>Contact</h1>
-    }
+	@component.Layout(component.LayoutProps{
+		Section: component.Section{
+			Styles:  []templ.Component{ContactStyle()},
+			Scripts: []templ.ComponentScript{ContactScript()},
+		},
+		ShowNavbar:  true,
+		ShowSidebar: true,
+		CurrentPage: "contact",
+	}) {
+		<h1>Contact</h1>
+	}
 }

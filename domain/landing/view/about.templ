@@ -10,7 +10,7 @@ script AboutScript() {
 }
 
 templ AboutStyle() {
-    <style>
+	<style>
         h1 {
             color: red;
         }
@@ -18,14 +18,15 @@ templ AboutStyle() {
 }
 
 templ About() {
-    @component.Layout(component.LayoutProps{
-        Section: component.Section{
-            Styles: []templ.Component{AboutStyle()},
-            Scripts: []templ.ComponentScript{AboutScript()},
-        },
-        ShowNavbar: true,
-        CurrentPage: "about",
-    }) {
-        <h1>About</h1>
-    }
+	@component.Layout(component.LayoutProps{
+		Section: component.Section{
+			Styles:  []templ.Component{AboutStyle()},
+			Scripts: []templ.ComponentScript{AboutScript()},
+		},
+		ShowNavbar:  true,
+		ShowSidebar: true,
+		CurrentPage: "about",
+	}) {
+		<h1>About</h1>
+	}
 }

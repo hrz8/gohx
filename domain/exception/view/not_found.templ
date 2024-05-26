@@ -5,10 +5,11 @@ import (
 )
 
 templ NotFound() {
-    @component.Layout(component.LayoutProps{
-        ShowNavbar: false,
-    }) {
-        <h1>404 Not Found</h1>
-        <a hx-boost="true" href="/">Back to home</a>
-    }
+	@component.Layout(component.LayoutProps{
+		ShowNavbar:  false,
+		ShowSidebar: false,
+	}) {
+		<h1>404 Not Found</h1>
+		<a href="/">Back to home</a>
+	}
 }

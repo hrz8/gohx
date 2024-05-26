@@ -9,7 +9,7 @@ script IndexScript() {
 }
 
 templ IndexStyle() {
-    <style>
+	<style>
         h1 {
             color: green;
         }
@@ -17,14 +17,15 @@ templ IndexStyle() {
 }
 
 templ Index() {
-    @component.Layout(component.LayoutProps{
-        Section: component.Section{
-            Styles: []templ.Component{IndexStyle()},
-            Scripts: []templ.ComponentScript{IndexScript()},
-        },
-        ShowNavbar: true,
-        CurrentPage: "products",
-    }) {
-        <h1>Our Products</h1>
-    }
+	@component.Layout(component.LayoutProps{
+		Section: component.Section{
+			Styles:  []templ.Component{IndexStyle()},
+			Scripts: []templ.ComponentScript{IndexScript()},
+		},
+		ShowNavbar:  true,
+		ShowSidebar: true,
+		CurrentPage: "products",
+	}) {
+		<h1>Our Products</h1>
+	}
 }
