@@ -11,7 +11,7 @@ type Section struct {
 
 templ Loading() {
 	<div class="router-indicator">
-		<div class="indeterminate"></div>
+		<div class="indeterminate dark:indeterminate-dark"></div>
 	</div>
 }
 
@@ -35,7 +35,7 @@ templ Base(props Section) {
 				class="bg-gray-50 dark:bg-gray-800"
 				hx-indicator=".router-indicator"
 				hx-target="#main-content"
-				hx-select-oob="#main-content,#navbar-content,#custom-scripts,#custom-styles"
+				hx-select-oob="#main-content,#sidebar-content,#custom-scripts,#custom-styles"
 				hx-swap="none"
 			>
 				@Loading()

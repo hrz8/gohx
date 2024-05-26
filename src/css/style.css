@@ -15,10 +15,14 @@
 }
 
 .router-indicator .indeterminate {
+  background-color: #000;
+}
+
+.dark .router-indicator .dark\:indeterminate-dark {
   background-color: #fff;
 }
 
-.router-indicator .indeterminate:before {
+.router-indicator .indeterminate:before, .router-indicator .indeterminate-dark:before {
   content: "";
   position: absolute;
   background-color: inherit;
@@ -30,7 +34,7 @@
   animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
 }
 
-.router-indicator .indeterminate:after {
+.router-indicator .indeterminate:after, .router-indicator .indeterminate-dark:after {
   content: "";
   position: absolute;
   background-color: inherit;

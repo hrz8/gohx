@@ -9,7 +9,7 @@ script HomeScript() {
 }
 
 templ HomeStyle() {
-    <style>
+	<style>
         h1 {
             color: violet;
         }
@@ -17,14 +17,15 @@ templ HomeStyle() {
 }
 
 templ Home() {
-    @component.Layout(component.LayoutProps{
-        Section: component.Section{
-            Styles: []templ.Component{HomeStyle()},
-            Scripts: []templ.ComponentScript{HomeScript()},
-        },
-        ShowNavbar: true,
-        CurrentPage: "home",
-    }) {
-        <h1>Homepage</h1>
-    }
+	@component.Layout(component.LayoutProps{
+		Section: component.Section{
+			Styles:  []templ.Component{HomeStyle()},
+			Scripts: []templ.ComponentScript{HomeScript()},
+		},
+		ShowNavbar:  true,
+		ShowSidebar: true,
+		CurrentPage: "home",
+	}) {
+		<h1>Homepage</h1>
+	}
 }

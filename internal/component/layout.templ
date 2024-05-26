@@ -7,7 +7,12 @@ import (
 type LayoutProps struct {
 	Section
 	ShowNavbar  bool
+	ShowSidebar bool
 	CurrentPage string
+}
+
+templ SidebarBackDrop() {
+	<div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
 }
 
 templ Layout(props LayoutProps) {
@@ -17,13 +22,17 @@ templ Layout(props LayoutProps) {
 	}) {
 		if props.ShowNavbar {
 			@Navbar()
-			// @Navbar(NavbarProps{
-			// 	CurrentPage: props.CurrentPage,
-			// })
 		}
+		// @Navbar(NavbarProps{
+		// 	CurrentPage: props.CurrentPage,
+		// })
 		<div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-			@Sidebar()
-			@SidebarBackDrop()
+			if props.ShowSidebar {
+				@Sidebar(SidebarProps{
+					CurrentPage: props.CurrentPage,
+				})
+				@SidebarBackDrop()
+			}
 			<div class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
 				<div class="row">
 					<main id="main-content">
