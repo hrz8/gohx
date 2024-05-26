@@ -5,6 +5,7 @@ export default {
     "./**/*.templ",
     './node_modules/flowbite/**/*.js',
   ],
+  darkMode: 'class',
   plugins: [
     require('flowbite/plugin'),
   ],

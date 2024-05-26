@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  padding-top: 70px;
-}
-
 .router-indicator {
   position: fixed;
   z-index: 9999;
