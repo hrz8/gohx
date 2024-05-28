@@ -9,6 +9,7 @@ meta.json
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 tmp
+bin
 
 # dotenv environment variable files
 .env

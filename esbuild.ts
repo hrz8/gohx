@@ -33,7 +33,30 @@ const config: esbuild.BuildOptions = {
       resolveFrom: 'cwd',
       assets: {
         from: ['./node_modules/htmx.org/dist/htmx.min.js'],
-        to: ['./assets/public/vendor'],
+        to: ['./assets/public/vendor/htmx'],
+      },
+      watch: true,
+    }),
+    copy({
+      resolveFrom: 'cwd',
+      assets: {
+        from: [
+          './node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css',
+          './node_modules/@fortawesome/fontawesome-free/css/brands.min.css',
+          './node_modules/@fortawesome/fontawesome-free/css/solid.min.css',
+          './node_modules/@fortawesome/fontawesome-free/css/regular.min.css',
+        ],
+        to: ['./assets/public/vendor/fontawesome/css'],
+      },
+      watch: true,
+    }),
+    copy({
+      resolveFrom: 'cwd',
+      assets: {
+        from: [
+          './node_modules/@fortawesome/fontawesome-free/webfonts/*',
+        ],
+        to: ['./assets/public/vendor/fontawesome/webfonts'],
       },
       watch: true,
     }),
