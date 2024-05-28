@@ -4,8 +4,8 @@ tasks:
     cmds:
       - go mod tidy
       - templ generate
-      - bun install
-      - bun run build 
+      - bun install --frozen-lockfile
+      - bun run build
   dev:
     cmds:
       - air

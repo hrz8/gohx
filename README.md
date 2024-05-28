@@ -23,7 +23,7 @@ task setup
 # or manually
 go mod tidy
 templ generate
-bun install
+bun install --frozen-lockfile
 bun run build
 ```
 

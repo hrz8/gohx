@@ -20,6 +20,7 @@
     "build:tailwind": "tailwindcss -i ./src/css/style.css -o ./assets/public/css/bundled.min.css"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "@types/bun": "^1.1.2",
     "@types/pg": "^8.11.6",
     "dotenv": "^16.4.5",
