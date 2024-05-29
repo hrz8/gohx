@@ -23,9 +23,6 @@ templ Layout(props LayoutProps) {
 		if props.ShowNavbar {
 			@Navbar()
 		}
-		// @Navbar(NavbarProps{
-		// 	CurrentPage: props.CurrentPage,
-		// })
 		<div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
 			if props.ShowSidebar {
 				@Sidebar(SidebarProps{
@@ -34,11 +31,10 @@ templ Layout(props LayoutProps) {
 				@SidebarBackDrop()
 			}
 			<div class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
-				<div class="row">
-					<main id="main-content">
-						{ children... }
-					</main>
-				</div>
+				<main id="main-content" class="min-h-[70vh]">
+					{ children... }
+				</main>
+				@Footer()
 			</div>
 		</div>
 		if helper.IsHtmxRequest(ctx) {

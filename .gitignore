@@ -29,3 +29,4 @@ bin
 assets/public/css/*.css
 assets/public/js/*.js
 assets/public/vendor/*
+!assets/public/vendor/**/signal*.js
